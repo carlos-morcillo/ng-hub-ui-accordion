@@ -1,0 +1,26 @@
+<h2 class="hub-accordion-header">
+	<button
+		class="hub-accordion-button"
+		type="button"
+		[class.collapsed]="collapsed()"
+		[attr.data-bs-target]="'#collapse' + index"
+		[attr.aria-expanded]="!collapsed()"
+		[attr.aria-controls]="'collapse' + index"
+		(click)="toggleCollapse()"
+	>
+		@if (headerTpt()) {
+			<ng-container [ngTemplateOutlet]="$any(headerTpt())"></ng-container>
+		} @else if (title()) {
+			{{ title() }}
+		}
+	</button>
+</h2>
+<div
+	[attr.id]="'collapse' + index"
+	class="hub-accordion-collapse collapse"
+	[class.show]="!collapsed()"
+>
+	<div class="hub-accordion-body">
+		<ng-content></ng-content>
+	</div>
+</div>

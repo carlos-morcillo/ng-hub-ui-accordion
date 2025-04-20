@@ -1,0 +1,31 @@
+{
+	"name": "ng-hub-ui-accordion",
+	"version": "19.0.0",
+	"description": "A flexible, accessible, and customizable accordion component for Angular 19, part of the ng-hub-ui family.",
+	"author": "Carlos Morcillo <carlos.morcillo@me.com> (https://www.carlosmorcillo.com)",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/carlosmorcillo/ng-hub-ui-accordion.git"
+	},
+	"homepage": "https://www.carlosmorcillo.com",
+	"keywords": [
+		"angular",
+		"accordion",
+		"ui-component",
+		"angular-library",
+		"ng-hub-ui",
+		"ng-hub-ui-accordion",
+		"typescript",
+		"signals",
+		"angular",
+		"angular19"
+	],
+	"peerDependencies": {
+		"@angular/common": "^19.0.0",
+		"@angular/core": "^19.0.0"
+	},
+	"dependencies": {
+		"tslib": "^2.3.0"
+	},
+	"sideEffects": false
+}
