@@ -1,11 +1,27 @@
 /**
- * Represents an event that occurs when a collapsible element changes state.
+ * Represents the event emitted when an accordion or collapsible element changes its state.
  *
- * @interface
- * @property {number} index - The index of the collapsed/expanded element
- * @property {boolean} collapsed - The current collapse state. True if collapsed, false if expanded
+ * @template T - The type of value associated with the collapsible element.
  */
-export interface collapseEvent {
-  index: number;
-  collapsed: boolean;
+export interface CollapseEvent<T = any> {
+	/**
+	 * The index of the item within the collection of collapsible elements.
+	 */
+	index: number;
+
+	/**
+	 * Indicates whether the item is currently collapsed (`true`) or not (`false`).
+	 */
+	collapsed: boolean;
+
+	/**
+	 * Indicates whether the item is currently uncollapsed (`true`) or not (`false`).
+	 * Useful when distinguishing explicitly expanded items.
+	 */
+	uncollapsed: boolean;
+
+	/**
+	 * The value associated with the collapsible element.
+	 */
+	value: T;
 }

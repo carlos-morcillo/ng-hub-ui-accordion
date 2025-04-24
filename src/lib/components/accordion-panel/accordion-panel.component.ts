@@ -8,7 +8,7 @@ import {
 	TemplateRef
 } from '@angular/core';
 import { AccordionPanelHeaderDirective } from '../../directives/accordion-panel-header.directive';
-import { collapseEvent } from '../../models/collapse-event';
+import { CollapseEvent } from '../../models/collapse-event';
 
 /**
  * A component that represents a single panel within an accordion.
@@ -76,7 +76,7 @@ export class AccordionPanelComponent {
 	 * Emits a collapseEvent object containing the collapse state and animation details.
 	 * @event
 	 */
-	collapsedChange = output<collapseEvent>();
+	collapsedChange = output<CollapseEvent>();
 
 	/**
 	 * Toggles the collapse state of the accordion panel and emits the change event.
@@ -88,7 +88,9 @@ export class AccordionPanelComponent {
 		this.collapsed.update((value) => !value);
 		this.collapsedChange.emit({
 			index: this.index,
-			collapsed: this.collapsed()
+			collapsed: this.collapsed(),
+			uncollapsed: !this.collapsed(),
+			value: this.value()
 		});
 	}
 }

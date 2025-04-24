@@ -50,25 +50,23 @@
 	--hub-accordion-active-bg: #e7f1ff;
 
 	&.hub-accordion-flush {
-		::ng-deep {
-			> .hub-accordion-item {
-				border-right: 0;
-				border-left: 0;
+		> .hub-accordion-panel {
+			border-right: 0;
+			border-left: 0;
+			border-radius: 0;
+
+			&:first-child {
+				border-top: 0;
+			}
+
+			&:last-child {
+				border-bottom: 0;
+			}
+
+			> .hub-accordion-collapse,
+			> .hub-accordion-header .hub-accordion-button,
+			> .hub-accordion-header .hub-accordion-button.collapsed {
 				border-radius: 0;
-
-				&:first-child {
-					border-top: 0;
-				}
-
-				&:last-child {
-					border-bottom: 0;
-				}
-
-				> .hub-accordion-collapse,
-				> .hub-accordion-header .hub-accordion-button,
-				> .hub-accordion-header .hub-accordion-button.collapsed {
-					border-radius: 0;
-				}
 			}
 		}
 	}

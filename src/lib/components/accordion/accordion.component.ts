@@ -7,7 +7,7 @@ import {
 	input
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { collapseEvent } from '../../models/collapse-event';
+import { CollapseEvent } from '../../models/collapse-event';
 import { AccordionPanelComponent } from '../accordion-panel/accordion-panel.component';
 
 /**
@@ -167,27 +167,22 @@ export class AccordionComponent implements ControlValueAccessor {
 	 * If the panel is being expanded and multiple is enabled,
 	 * all other panels will be collapsed.
 	 *
-	 * @param {collapseEvent} param0 - Object containing panel index and collapse state
+	 * @param {CollapseEvent} param0 - Object containing panel index and collapse state
 	 * @param {number} param0.index - The index of the panel being toggled
 	 * @param {boolean} param0.collapsed - The new collapse state of the panel
+	 * @param {boolean} param0.value - The panel value
 	 */
-	handlePanelCollapse({ index, collapsed }: collapseEvent) {
+	handlePanelCollapse({ index, collapsed, value }: CollapseEvent) {
 		if (!Array.isArray(this.value)) {
 			this.value = [];
 		}
 
-		const item = this.panels().at(index);
-
 		if (collapsed) {
-			if (item) {
-				this.value = this.value.filter(
-					(value) => !this.compareWith()(value, item.value())
-				);
-			}
+			this.value = this.value.filter(
+				(item) => !this.compareWith()(item, value)
+			);
 		} else {
-			this.value = !this.multiple()
-				? [item?.value() ?? index]
-				: [...this.value, item?.value() ?? index];
+			this.value = !this.multiple() ? [value] : [...this.value, value];
 		}
 		if (!collapsed && !this.multiple()) {
 			for (const panel of this.panels()) {
