@@ -14,7 +14,6 @@
 		"ui-component",
 		"angular-library",
 		"ng-hub-ui",
-		"ng-hub-ui-accordion",
 		"typescript",
 		"signals",
 		"angular",
