@@ -159,6 +159,12 @@ form = new FormGroup({
 
 The `ng-hub-ui-accordion` library provides full style customization capabilities via **CSS variables**, making it easy to adapt the accordion to your project design requirements.
 
+Make sure to include the accordion base styles in your main stylesheet:
+
+```scss
+@use 'ng-hub-ui-accordion/src/lib/styles/base.scss' as accordionBase;
+```
+
 There are two main ways to customize the accordion styles:
 
 ### 1. Global Customization
