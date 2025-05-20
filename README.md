@@ -4,7 +4,7 @@ A flexible, accessible, and customizable accordion UI component for Angular 19, 
 
 Explore other UI libraries:
 
-- [`ng-hub-ui-table`](https://www.npmjs.com/package/ng-hub-ui-table)
+- [`ng-hub-ui-paginable`](https://www.npmjs.com/package/ng-hub-ui-paginable)
 - [`ng-hub-ui-breadcrumbs`](https://www.npmjs.com/package/ng-hub-ui-breadcrumbs)
 - [`ng-hub-ui-modal`](https://www.npmjs.com/package/ng-hub-ui-modal)
 - [`ng-hub-ui-portal`](https://www.npmjs.com/package/ng-hub-ui-portal)
