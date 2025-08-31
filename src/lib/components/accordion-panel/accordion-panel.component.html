@@ -17,8 +17,8 @@
 </h2>
 <div
 	[attr.id]="'collapse' + index"
-	class="hub-accordion-collapse collapse"
-	[class.show]="!collapsed()"
+	class="hub-accordion-collapse"
+	[@slideInOut]="collapsed() ? 'collapsed' : 'expanded'"
 >
 	<div class="hub-accordion-body">
 		<ng-content></ng-content>
