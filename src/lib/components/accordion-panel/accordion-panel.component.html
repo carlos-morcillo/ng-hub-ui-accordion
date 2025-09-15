@@ -18,9 +18,15 @@
 <div
 	[attr.id]="'collapse' + index"
 	class="hub-accordion-collapse"
-	[@slideInOut]="collapsed() ? 'collapsed' : 'expanded'"
+	[attr.aria-hidden]="collapsed()"
 >
-	<div class="hub-accordion-body">
-		<ng-content></ng-content>
-	</div>
+	@if (!collapsed()) {
+		<div
+			class="hub-accordion-body"
+			(animate.enter)="onEnterAnimation($event)"
+			(animate.leave)="onLeaveAnimation($event)"
+		>
+			<ng-content></ng-content>
+		</div>
+	}
 </div>
