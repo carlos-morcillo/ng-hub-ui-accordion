@@ -5,9 +5,25 @@ All notable changes to the ng-hub-ui-accordion library will be documented in thi
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [21.0.0] - 2026-01-30
+
+### Added
+
+- Full Angular 21 compatibility.
+- New API based on `input()`, `output()` and `model()` signals.
+
+### Changed
+
+- Migrated all inputs and outputs to standard Angular Signal API.
+
+### Fixed
+
+- Improved type safety and change detection performance.
+
 ## [19.0.6] - 2024-09-15
 
 ### Added
+
 - Comprehensive documentation page with functional examples
 - Multiple expansion example component demonstrating `[multiple]="true"` functionality
 - Reactive forms integration example with real-time value display and form control binding
@@ -23,6 +39,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Example demo containers with visual indicators and professional styling
 
 ### Changed
+
 - Updated documentation structure with Overview, Functionalities, API, and Styling tabs
 - Enhanced code examples with proper TypeScript and HTML syntax highlighting
 - Improved example organization by functionality categories (Core Features, Form Integration, Custom Templates, Advanced Configuration, Accessibility Features)
@@ -30,6 +47,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Updated library interface with complete information from README documentation
 
 ### Fixed
+
 - Added missing imports (JsonPipe, DatePipe) to example components for proper functionality
 - Corrected template syntax in complex header example to use modern Angular control flow (@for)
 - Fixed item tracking with proper id properties in dynamic examples
@@ -37,45 +55,54 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [19.0.5] - 2024-03-15
 
 ### Added
+
 - Full Angular 19 compatibility
 - Enhanced Angular Signals integration
 - Improved Bootstrap 5 styling compatibility
 
 ### Fixed
+
 - Performance optimizations with contentChildren
 
 ### Changed
+
 - Comprehensive documentation updates
 
 ## [19.0.0] - 2024-01-15
 
 ### Changed
+
 - Migrated to Angular 19 with standalone components
 - Updated to use Angular Signals architecture throughout
 
 ### Added
+
 - Full Angular Signals Support with model(), input(), output()
 - Complete Form Integration with ControlValueAccessor
 - ARIA accessibility improvements
 - Custom Header Templates support with hubAccordionPanelHeader directive
 
 ### Removed
+
 - Legacy NgModule-based architecture
 - Deprecated API methods from previous versions
 
 ## [18.2.1] - 2023-12-01
 
 ### Added
+
 - Initial accordion component implementation
 - Basic expand/collapse functionality
 - Bootstrap 5 styling integration
 
 ### Fixed
+
 - Initial bug fixes and stability improvements
 
 ## [18.2.0] - 2023-11-15
 
 ### Added
+
 - Project initialization
 - Core accordion structure
 - Basic documentation setup
@@ -85,15 +112,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## Migration Notes
 
 ### From 19.0.5 to 19.0.6
+
 - No breaking changes
 - New example components are available for reference
 - Documentation structure enhanced with functional examples
 
 ### From 19.0.0 to 19.0.5
+
 - No breaking changes
 - Improved performance and compatibility
 
 ### From 18.x to 19.0.0
+
 - **BREAKING**: Migrated from NgModule to standalone components
 - **BREAKING**: Updated to Angular Signals architecture
 - Update imports from module-based to component-based imports
@@ -104,24 +134,24 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 This version includes comprehensive examples demonstrating:
 
 1. **Core Features**
-   - Basic Setup
-   - Multiple Panel Expansion
+    - Basic Setup
+    - Multiple Panel Expansion
 
 2. **Form Integration**
-   - Reactive Forms
-   - Template-driven Forms
+    - Reactive Forms
+    - Template-driven Forms
 
 3. **Custom Templates**
-   - Custom Header Templates
-   - Complex Interactive Headers
+    - Custom Header Templates
+    - Complex Interactive Headers
 
 4. **Advanced Configuration**
-   - Flush (Borderless) Mode
-   - Dynamic Panels
-   - Custom Value Comparison
+    - Flush (Borderless) Mode
+    - Dynamic Panels
+    - Custom Value Comparison
 
 5. **Accessibility Features**
-   - Keyboard Navigation
-   - Screen Reader Support
+    - Keyboard Navigation
+    - Screen Reader Support
 
 All examples are fully functional and include complete code samples with syntax highlighting.
