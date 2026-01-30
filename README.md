@@ -1,10 +1,26 @@
 # ng-hub-ui-accordion
 
+## 🧩 Library Family `ng-hub-ui`
+
+This library is part of the **ng-hub-ui** ecosystem:
+
+- [**ng-hub-ui-accordion**](https://www.npmjs.com/package/ng-hub-ui-accordion) ← You are here
+- [**ng-hub-ui-avatar**](https://www.npmjs.com/package/ng-hub-ui-avatar)
+- [**ng-hub-ui-board**](https://www.npmjs.com/package/ng-hub-ui-board)
+- [**ng-hub-ui-breadcrumbs**](https://www.npmjs.com/package/ng-hub-ui-breadcrumbs)
+- [**ng-hub-ui-calendar**](https://www.npmjs.com/package/ng-hub-ui-calendar)
+- [**ng-hub-ui-modal**](https://www.npmjs.com/package/ng-hub-ui-modal)
+- [**ng-hub-ui-paginable**](https://www.npmjs.com/package/ng-hub-ui-paginable)
+- [**ng-hub-ui-portal**](https://www.npmjs.com/package/ng-hub-ui-portal)
+- [**ng-hub-ui-stepper**](https://www.npmjs.com/package/ng-hub-ui-stepper)
+- [**ng-hub-ui-utils**](https://www.npmjs.com/package/ng-hub-ui-utils)
+
+---
+
 ## 📋 Table of Contents
 
 - [🚀 Quick Start](#-quick-start)
 - [✨ Inspiration](#-inspiration)
-- [🧩 Library Family](#-library-family-ng-hub-ui)
 - [📦 Description](#-description)
 - [🎯 Features](#-features)
 - [🏗️ Component Architecture](#️-component-architecture)
@@ -70,20 +86,6 @@ import { AccordionComponent, AccordionPanelComponent } from 'ng-hub-ui-accordion
 ## ✨ Inspiration
 
 This accordion component was born from the need for a highly flexible, accessible, and form-integrated accordion solution for Angular applications. Built with modern Angular Signals architecture and inspired by Bootstrap's accordion pattern, it provides seamless integration with Angular's reactive forms while maintaining full customization control.
-
-## 🧩 Library Family `ng-hub-ui`
-
-`ng-hub-ui-accordion` is part of the `ng-hub-ui` ecosystem, a family of modern Angular components focused on user experience, productivity, and compatibility with Angular Signals. Each package solves a specific UI problem without overloading business logic.
-
-**Explore other UI libraries:**
-
-- [`ng-hub-ui-paginable`](https://www.npmjs.com/package/ng-hub-ui-paginable) - Advanced data tables with pagination, filtering, and sorting
-- [`ng-hub-ui-breadcrumbs`](https://www.npmjs.com/package/ng-hub-ui-breadcrumbs) - Navigation breadcrumb trails
-- [`ng-hub-ui-modal`](https://www.npmjs.com/package/ng-hub-ui-modal) - Modal dialog components
-- [`ng-hub-ui-portal`](https://www.npmjs.com/package/ng-hub-ui-portal) - Portal/overlay components
-- [`ng-hub-ui-accordion`](https://www.npmjs.com/package/ng-hub-ui-accordion) ← you are here
-
----
 
 ## 📦 Description
 
@@ -1796,7 +1798,7 @@ We welcome contributions to make ng-hub-ui-accordion even better!
 
 Do you like this library? You can support the continued development and maintenance:
 
-**☕ [Buy me a coffee](https://www.buymeacoffee.com/carlosmorcillo)**
+**☕ [Buy me a coffee](https://buymeacoffee.com/carlosmorcillo)**
 
 Your support helps fund:
 - 🔄 Regular updates and new features
