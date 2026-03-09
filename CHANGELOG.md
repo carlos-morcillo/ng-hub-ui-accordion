@@ -5,6 +5,16 @@ All notable changes to the ng-hub-ui-accordion library will be documented in thi
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [21.1.0] - 2026-03-09
+
+### Added
+
+- Added `docs/css-variables-reference.md` to document the new CSS variables system.
+
+### Changed
+
+- Refactored the component's CSS variables, replacing hardcoded values with the new `sys` and `ref` token system for better maintainability and theming.
+
 ## [21.0.0] - 2026-01-30
 
 ### Added

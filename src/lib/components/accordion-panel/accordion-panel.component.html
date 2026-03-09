@@ -15,10 +15,14 @@
 		}
 	</button>
 </h2>
-<div [attr.id]="'collapse' + index" class="hub-accordion-collapse" [attr.aria-hidden]="collapsed()">
-	@if (!collapsed()) {
-		<div class="hub-accordion-body" (animate.enter)="onEnterAnimation($event)" (animate.leave)="onLeaveAnimation($event)">
-			<ng-content></ng-content>
-		</div>
-	}
+<div
+	[attr.id]="'collapse' + index"
+	class="hub-accordion-collapse"
+	[class.hub-accordion-collapse--collapsed]="collapsed()"
+	[attr.aria-hidden]="collapsed()"
+	[attr.inert]="collapsed() ? '' : null"
+>
+	<div class="hub-accordion-body">
+		<ng-content></ng-content>
+	</div>
 </div>

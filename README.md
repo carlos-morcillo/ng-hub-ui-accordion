@@ -138,7 +138,7 @@ ng-hub-ui-accordion/
 ├── 🎯 Models
 │   └── CollapseEvent            - Event data structure
 └── 🎨 Styles
-    └── base.scss               - Complete styling with CSS variables
+    └── accordion.scss          - Complete styling with CSS variables
 ```
 
 ### Component Relationships
@@ -296,7 +296,7 @@ Include the base styles for Bootstrap-compatible styling:
 
 ```scss
 // In your styles.scss or component styles
-@use 'ng-hub-ui-accordion/src/lib/styles/base.scss';
+@use 'ng-hub-ui-accordion/src/lib/styles/accordion.scss';
 ```
 
 ---
@@ -1182,7 +1182,7 @@ import { AccordionPanelHeaderDirective } from 'ng-hub-ui-accordion';
 
 ```scss
 // Solution: Include base styles in your styles.scss
-@use 'ng-hub-ui-accordion/src/lib/styles/base.scss';
+@use 'ng-hub-ui-accordion/src/lib/styles/accordion.scss';
 ```
 
 ---
@@ -1523,9 +1523,22 @@ form = new FormGroup({
 
 **Q: How do I change the expand/collapse icons?**
 
+Framework-agnostic:
+
 ```scss
-.hub-accordion-button::after {
-	background-image: url('data:image/svg+xml;charset=UTF-8,%3Csvg ...%3E'); // Your custom icon
+.hub-accordion {
+	--hub-accordion-icon-color: #6c757d;
+	--hub-accordion-icon-active-color: #0d6efd;
+	--hub-accordion-btn-icon-mask: url("data:image/svg+xml;charset=UTF-8,%3Csvg ...%3E");
+}
+```
+
+Bootstrap integration (optional):
+
+```scss
+.hub-accordion {
+	--hub-accordion-icon-color: var(--bs-secondary);
+	--hub-accordion-icon-active-color: var(--bs-primary);
 }
 ```
 
@@ -1572,141 +1585,39 @@ new FormControl([]);
 
 ---
 
-## 🎨 Customizing Styles
+## 🎨 Styling
 
-The `ng-hub-ui-accordion` library provides full style customization capabilities via **CSS variables**, making it easy to adapt the accordion to your project design requirements.
+`ng-hub-ui-accordion` is fully style-configurable through **CSS custom properties (CSS variables)**.
 
-Make sure to include the accordion base styles in your main stylesheet:
+For a complete and up-to-date token catalog, see [CSS Variables Reference](./docs/css-variables-reference.md).
+
+### 🔗 Import styles
 
 ```scss
-@use 'ng-hub-ui-accordion/src/lib/styles/base.scss' as accordionBase;
+@use 'ng-hub-ui-accordion/src/lib/styles/accordion.scss';
 ```
 
-There are two main ways to customize the accordion styles:
-
-### 1. Global Customization
-
-You can redefine CSS variables globally by targeting the `.hub-accordion` class from your project-wide `styles.scss` file or any global stylesheet.
-
-Example:
+### 🎛 Quick customization example
 
 ```scss
 .hub-accordion {
-	--hub-accordion-btn-bg: var(--bs-danger);
-	--hub-accordion-active-color: #fff;
-	--hub-accordion-active-bg: var(--bs-primary);
+  --hub-accordion-btn-bg: #f8f9fa;
+  --hub-accordion-active-bg: #0d6efd;
+  --hub-accordion-active-color: #ffffff;
+  --hub-accordion-icon-color: #6c757d;
+  --hub-accordion-icon-active-color: #ffffff;
 }
 ```
 
-> **Important**: Make sure your global CSS is loaded after the library's styles, or increase the specificity (e.g., `html body .hub-accordion {}`) if needed.
-
-### 2. Inline Customization (Per Component)
-
-You can customize the appearance individually by applying CSS variables **inline** on the `hub-accordion` tag.
-
-Example:
-
-```html
-<hub-accordion style="--hub-accordion-btn-bg: var(--bs-danger); --hub-accordion-active-bg: var(--bs-primary);">
-	<hub-accordion-panel title="Custom Panel" [value]="1"> Content here </hub-accordion-panel>
-</hub-accordion>
-```
-
-Inline styles take precedence and are ideal for selective styling.
-
----
-
-### 📖 Available CSS Variables
-
-| Variable                               | Description                                                |
-| :------------------------------------- | :--------------------------------------------------------- |
-| `--hub-accordion-color`                | Text color for accordion content.                          |
-| `--hub-accordion-bg`                   | Background color of the accordion.                         |
-| `--hub-accordion-transition`           | Transition for background, border, shadow, radius changes. |
-| `--hub-accordion-border-color`         | Border color of each item.                                 |
-| `--hub-accordion-border-width`         | Border width of each item.                                 |
-| `--hub-accordion-border-radius`        | Global accordion border radius.                            |
-| `--hub-accordion-inner-border-radius`  | Inner elements' border radius.                             |
-| `--hub-accordion-btn-padding-x`        | Header button horizontal padding.                          |
-| `--hub-accordion-btn-padding-y`        | Header button vertical padding.                            |
-| `--hub-accordion-btn-color`            | Text color of panel headers.                               |
-| `--hub-accordion-btn-bg`               | Background color of panel headers.                         |
-| `--hub-accordion-btn-icon`             | Icon for collapsed state.                                  |
-| `--hub-accordion-btn-icon-width`       | Icon size.                                                 |
-| `--hub-accordion-btn-icon-transform`   | Icon transformation on expand.                             |
-| `--hub-accordion-btn-icon-transition`  | Icon transition animation.                                 |
-| `--hub-accordion-btn-active-icon`      | Icon for expanded state.                                   |
-| `--hub-accordion-btn-focus-box-shadow` | Box shadow on focus.                                       |
-| `--hub-accordion-body-padding-x`       | Panel body horizontal padding.                             |
-| `--hub-accordion-body-padding-y`       | Panel body vertical padding.                               |
-| `--hub-accordion-active-color`         | Active panel header text color.                            |
-| `--hub-accordion-active-bg`            | Active panel header background color.                      |
-
----
-
-### 🛠 Visual Examples of Variable Effects
-
-| Customization            |    Before    |          After           |
-| :----------------------- | :----------: | :----------------------: |
-| Change header background |  Light gray  | Red (`var(--bs-danger)`) |
-| Change active text color |    Black     |      White (`#fff`)      |
-| Change icon color        | Default gray | Bootstrap primary color  |
-| Adjust padding           |     1rem     |  2rem for more spacing   |
-
----
-
-### 🔗 Mapping Bootstrap Variables to Accordion Variables
-
-You can easily map Bootstrap variables into the accordion to maintain design consistency.
-
-Example in `styles.scss`:
+### 🔌 Bootstrap integration (optional)
 
 ```scss
 .hub-accordion {
-	--hub-accordion-btn-bg: var(--bs-light);
-	--hub-accordion-active-bg: var(--bs-primary);
-	--hub-accordion-btn-color: var(--bs-dark);
-	--hub-accordion-active-color: var(--bs-white);
-	--hub-accordion-border-color: var(--bs-border-color);
-}
-```
-
-This will dynamically link the accordion's appearance to the Bootstrap theme being used in your project.
-
-> **Tip**: You can change Bootstrap's default colors via `:root` and the accordion will adapt automatically.
-
-### Advanced Styling Examples
-
-#### Dark Mode Support
-
-```scss
-[data-bs-theme='dark'] .hub-accordion {
-	--hub-accordion-bg: #212529;
-	--hub-accordion-color: #ffffff;
-	--hub-accordion-btn-bg: #343a40;
-	--hub-accordion-btn-color: #ffffff;
-	--hub-accordion-border-color: #495057;
-	--hub-accordion-active-bg: #0d6efd;
-	--hub-accordion-active-color: #ffffff;
-}
-```
-
-#### Custom Theme Integration
-
-```scss
-.hub-accordion {
-	&.theme-corporate {
-		--hub-accordion-btn-bg: #f8f9fa;
-		--hub-accordion-active-bg: #0052cc;
-		--hub-accordion-active-color: #ffffff;
-		--hub-accordion-border-color: #e9ecef;
-	}
-
-	&.theme-vibrant {
-		--hub-accordion-btn-bg: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-		--hub-accordion-active-bg: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-		--hub-accordion-border-radius: 12px;
-	}
+  --hub-accordion-btn-bg: var(--bs-light);
+  --hub-accordion-active-bg: var(--bs-primary);
+  --hub-accordion-active-color: var(--bs-white);
+  --hub-accordion-icon-color: var(--bs-secondary);
+  --hub-accordion-icon-active-color: var(--bs-white);
 }
 ```
 

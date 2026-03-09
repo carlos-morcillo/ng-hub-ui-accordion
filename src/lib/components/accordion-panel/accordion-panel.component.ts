@@ -1,6 +1,5 @@
 import { NgTemplateOutlet } from '@angular/common';
 import {
-	AnimationCallbackEvent,
 	Component,
 	contentChild,
 	ElementRef,
@@ -56,14 +55,6 @@ export class AccordionPanelComponent {
 	 */
 	private elementRef = inject(ElementRef);
 
-	/**
-	 * Tracks active animations so they can be cancelled when the panel state toggles quickly.
-	 */
-	private activeAnimations = new WeakMap<Element, Animation>();
-
-	private readonly animationDuration = 300;
-	private readonly animationEasing = 'cubic-bezier(0.4, 0.0, 0.2, 1)';
-
 	value: any = input();
 
 	/**
@@ -110,89 +101,6 @@ export class AccordionPanelComponent {
 			uncollapsed: !this.collapsed(),
 			value: this.value()
 		});
-	}
-
-	/**
-	 * Runs the expand animation for the accordion body when it becomes visible.
-	 */
-	onEnterAnimation(event: AnimationCallbackEvent) {
-		const element = event.target as HTMLElement;
-		this.cancelActiveAnimation(element);
-
-		const animationComplete = this.toAnimationCompleteCallback(event.animationComplete);
-		const cleanup = () => {
-			element.style.removeProperty('height');
-			element.style.removeProperty('opacity');
-			element.style.removeProperty('overflow');
-		};
-
-		if (!this.canAnimate(element)) {
-			cleanup();
-			animationComplete();
-			return;
-		}
-
-		const fullHeight = `${element.scrollHeight}px`;
-		element.style.height = '0';
-		element.style.opacity = '0';
-		element.style.overflow = 'hidden';
-
-		this.playAnimation(
-			element,
-			[
-				{ height: '0', opacity: 0 },
-				{ height: fullHeight, opacity: 1 }
-			],
-			{
-				onFinish: () => {
-					cleanup();
-					animationComplete();
-				},
-				onCancel: cleanup
-			}
-		);
-	}
-
-	/**
-	 * Runs the collapse animation for the accordion body when it is hidden.
-	 */
-	onLeaveAnimation(event: AnimationCallbackEvent) {
-		const element = event.target as HTMLElement;
-		this.cancelActiveAnimation(element);
-
-		const animationComplete = this.toAnimationCompleteCallback(event.animationComplete);
-		const cleanup = () => {
-			element.style.removeProperty('height');
-			element.style.removeProperty('opacity');
-			element.style.removeProperty('overflow');
-		};
-
-		if (!this.canAnimate(element)) {
-			cleanup();
-			animationComplete();
-			return;
-		}
-
-		const rect = element.getBoundingClientRect();
-		const startHeight = `${rect.height || element.scrollHeight}px`;
-		element.style.height = startHeight;
-		element.style.opacity = '1';
-		element.style.overflow = 'hidden';
-
-		this.playAnimation(
-			element,
-			[
-				{ height: startHeight, opacity: 1 },
-				{ height: '0px', opacity: 0 }
-			],
-			{
-				onFinish: () => {
-					cleanup();
-					animationComplete();
-				},
-				onCancel: cleanup
-			}
-		);
 	}
 
 	/**
@@ -298,55 +206,4 @@ export class AccordionPanelComponent {
 		return Math.max(0, allPanels.indexOf(currentButton));
 	}
 
-	private playAnimation(
-		element: HTMLElement,
-		keyframes: Keyframe[],
-		options: { onFinish: () => void; onCancel?: () => void }
-	) {
-		const animation = element.animate(keyframes, {
-			duration: this.animationDuration,
-			easing: this.animationEasing,
-			fill: 'forwards'
-		});
-
-		this.activeAnimations.set(element, animation);
-
-		const handleFinish = () => {
-			this.activeAnimations.delete(element);
-			options.onFinish();
-		};
-
-		const handleCancel = () => {
-			this.activeAnimations.delete(element);
-			options.onCancel?.();
-		};
-
-		animation.addEventListener('finish', handleFinish, { once: true });
-		animation.addEventListener('cancel', handleCancel, { once: true });
-	}
-
-	private cancelActiveAnimation(element: HTMLElement) {
-		const existingAnimation = this.activeAnimations.get(element);
-		if (existingAnimation) {
-			existingAnimation.cancel();
-		}
-	}
-
-	private canAnimate(element: HTMLElement): boolean {
-		if (!element || typeof element.animate !== 'function') {
-			return false;
-		}
-		if (typeof window === 'undefined' || typeof window.matchMedia !== 'function') {
-			return true;
-		}
-		return !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-	}
-
-	private toAnimationCompleteCallback(callback: Function | null | undefined): () => void {
-		return typeof callback === 'function'
-			? () => {
-					(callback as () => void)();
-				}
-			: () => {};
-	}
 }
