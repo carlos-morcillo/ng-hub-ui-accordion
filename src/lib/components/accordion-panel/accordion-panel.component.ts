@@ -39,6 +39,7 @@ import { CollapseEvent } from '../../models/collapse-event';
 	selector: 'hub-accordion-panel',
 	imports: [NgTemplateOutlet],
 	templateUrl: './accordion-panel.component.html',
+	styleUrl: './accordion-panel.component.scss',
 	host: { class: 'hub-accordion-panel' }
 })
 export class AccordionPanelComponent {

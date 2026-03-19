@@ -8,7 +8,6 @@ Use these variables to customize visual behavior without editing component sourc
 ## Table of Contents
 
 - [How it Works](#how-it-works)
-- [Importing Styles](#importing-styles)
 - [Base System Fallbacks](#base-system-fallbacks)
 - [Accordion Variables](#accordion-variables)
 - [Customization Examples](#customization-examples)
@@ -31,14 +30,6 @@ This allows:
 - runtime customization through CSS variables.
 
 ---
-
-## Importing Styles
-
-Add the accordion base styles to your global stylesheet:
-
-```scss
-@use 'ng-hub-ui-accordion/src/lib/styles/accordion.scss';
-```
 
 ---
 
@@ -63,7 +54,7 @@ Add the accordion base styles to your global stylesheet:
 
 ## Accordion Variables
 
-Defined and consumed by `projects/accordion/src/lib/styles/accordion.scss`.
+Defined in `accordion.component.scss` and consumed by `accordion-panel.component.scss`.
 
 ### Core
 

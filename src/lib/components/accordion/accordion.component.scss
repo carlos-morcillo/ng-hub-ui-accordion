@@ -1,0 +1,64 @@
+:root,
+:host {
+	--hub-accordion-color: var(--hub-sys-text-primary, #212529);
+	--hub-accordion-bg: var(--hub-sys-surface-page, #fff);
+	--hub-accordion-transition:
+		color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out,
+		box-shadow 0.15s ease-in-out, border-radius 0.15s ease;
+	--hub-accordion-border-color: var(--hub-sys-border-color-default, rgba(0, 0, 0, 0.125));
+	--hub-accordion-border-width: var(--hub-ref-border-width, 1px);
+	--hub-accordion-border-radius: var(--hub-ref-radius-sm, 0.25rem);
+	--hub-accordion-inner-border-radius: calc(
+		var(--hub-accordion-border-radius, var(--hub-ref-radius-sm, 0.25rem)) - var(
+				--hub-accordion-border-width,
+				var(--hub-ref-border-width, 1px)
+			)
+	);
+	--hub-accordion-btn-padding-x: 1.25rem;
+	--hub-accordion-btn-padding-y: var(--hub-ref-space-3, 1rem);
+	--hub-accordion-btn-color: var(--hub-sys-text-primary, #212529);
+	--hub-accordion-btn-bg: var(--hub-sys-surface-page, #fff);
+	--hub-accordion-icon-color: var(--hub-accordion-btn-color, var(--hub-sys-text-primary, #212529));
+	--hub-accordion-icon-active-color: var(--hub-accordion-active-color, var(--hub-sys-color-primary, #0d6efd));
+	--hub-accordion-btn-icon-mask: url("data:image/svg+xml;charset=UTF-8,%3Csvg viewBox='0 0 16 16' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='%23000' fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3E%3C/svg%3E");
+	--hub-accordion-btn-icon: var(--hub-accordion-btn-icon-mask);
+	--hub-accordion-btn-icon-width: 1.25rem;
+	--hub-accordion-btn-icon-transform: rotate(-180deg);
+	--hub-accordion-btn-icon-transition: transform 0.2s ease-in-out;
+	--hub-accordion-btn-active-icon: var(--hub-accordion-btn-icon-mask);
+	--hub-accordion-btn-focus-border-color: var(--hub-sys-color-primary, #86b7fe);
+	--hub-accordion-btn-focus-box-shadow: 0 0 0 var(--hub-sys-focus-ring-width, 0.25rem)
+		var(--hub-sys-focus-ring-color, rgba(13, 110, 253, 0.25));
+	--hub-accordion-collapse-transition-duration: 0.25s;
+	--hub-accordion-collapse-transition-easing: cubic-bezier(0.4, 0, 0.2, 1);
+	--hub-accordion-body-padding-x: 1.25rem;
+	--hub-accordion-body-padding-y: var(--hub-ref-space-3, 1rem);
+	--hub-accordion-active-color: var(--hub-sys-color-primary, #0c63e4);
+	--hub-accordion-active-bg: var(--hub-sys-color-primary-subtle, #e7f1ff);
+}
+
+:host {
+	display: block;
+}
+
+:host(.hub-accordion-flush) {
+	::ng-deep .hub-accordion-panel {
+		border-right: 0;
+		border-left: 0;
+		border-radius: 0;
+
+		&:first-child {
+			border-top: 0;
+		}
+
+		&:last-child {
+			border-bottom: 0;
+		}
+
+		> .hub-accordion-collapse,
+		> .hub-accordion-header .hub-accordion-button,
+		> .hub-accordion-header .hub-accordion-button.collapsed {
+			border-radius: 0;
+		}
+	}
+}

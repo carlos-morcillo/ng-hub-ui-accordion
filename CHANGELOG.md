@@ -5,6 +5,15 @@ All notable changes to the ng-hub-ui-accordion library will be documented in thi
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [21.1.1] - 2026-03-19
+
+### Fixed
+- Fixed `bindValue` not being applied in `handleValue()` and `updateAccordionValue()`. Values were being compared and stored using the raw panel object instead of the resolved `bindValue` path. Added `getComparableValue()` and `readByPath()` private helpers.
+- Fixed CSS variable declarations not being bundled with the component. Styles for `AccordionComponent` and `AccordionPanelComponent` are now self-contained via `styleUrl` — no manual stylesheet import required.
+
+### Removed
+- Removed orphaned `src/lib/styles/accordion.scss` (was not referenced by any component). Updated `README.md` and `docs/css-variables-reference.md` accordingly.
+
 ## [21.1.0] - 2026-03-09
 
 ### Added

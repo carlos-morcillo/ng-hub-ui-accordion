@@ -138,7 +138,8 @@ ng-hub-ui-accordion/
 ├── 🎯 Models
 │   └── CollapseEvent            - Event data structure
 └── 🎨 Styles
-    └── accordion.scss          - Complete styling with CSS variables
+    ├── accordion.component.scss      - Host styles and CSS variable declarations
+    └── accordion-panel.component.scss - Panel, button, collapse and body styles
 ```
 
 ### Component Relationships
@@ -288,15 +289,6 @@ The accordion component requires Angular 19+ with the following peer dependencie
 	"@angular/common": ">=19.0.0",
 	"@angular/core": ">=19.0.0"
 }
-```
-
-### Optional Styling
-
-Include the base styles for Bootstrap-compatible styling:
-
-```scss
-// In your styles.scss or component styles
-@use 'ng-hub-ui-accordion/src/lib/styles/accordion.scss';
 ```
 
 ---
@@ -1180,10 +1172,7 @@ import { AccordionPanelHeaderDirective } from 'ng-hub-ui-accordion';
 
 **Issue: Styling not applied**
 
-```scss
-// Solution: Include base styles in your styles.scss
-@use 'ng-hub-ui-accordion/src/lib/styles/accordion.scss';
-```
+Styles are bundled inside the component. Verify that `AccordionComponent` and `AccordionPanelComponent` are correctly imported in your standalone component or module.
 
 ---
 
@@ -1590,12 +1579,6 @@ new FormControl([]);
 `ng-hub-ui-accordion` is fully style-configurable through **CSS custom properties (CSS variables)**.
 
 For a complete and up-to-date token catalog, see [CSS Variables Reference](./docs/css-variables-reference.md).
-
-### 🔗 Import styles
-
-```scss
-@use 'ng-hub-ui-accordion/src/lib/styles/accordion.scss';
-```
 
 ### 🎛 Quick customization example
 

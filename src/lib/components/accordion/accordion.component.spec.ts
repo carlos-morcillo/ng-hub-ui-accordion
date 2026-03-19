@@ -1,6 +1,7 @@
 import { ComponentRef, signal } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { AccordionComponent } from './accordion.component';
+import { CollapseEvent } from '../../models/collapse-event';
 
 describe('AccordionComponent', () => {
 	let component: AccordionComponent;
@@ -60,9 +61,9 @@ describe('AccordionComponent', () => {
 			collapsed: { set: jasmine.createSpy('set') }
 		};
 		componentRef.setInput('multiple', false);
-		componentRef.setInput('panels', [mockPanel]);
+		spyOn(component, 'panels').and.returnValue([mockPanel] as any);
 
-		component.handlePanelCollapse({ index: 0, collapsed: false });
+		component.handlePanelCollapse(createCollapseEvent(0, 'test', false));
 		expect(component.value).toEqual(['test']);
 	});
 
@@ -73,9 +74,9 @@ describe('AccordionComponent', () => {
 			collapsed: { set: jasmine.createSpy('set') }
 		};
 		componentRef.setInput('multiple', true);
-		componentRef.setInput('panels', [mockPanel]);
+		spyOn(component, 'panels').and.returnValue([mockPanel] as any);
 
-		component.handlePanelCollapse({ index: 0, collapsed: false });
+		component.handlePanelCollapse(createCollapseEvent(0, 'test', false));
 		expect(component.value).toContain('test');
 	});
 
@@ -93,9 +94,9 @@ describe('AccordionComponent', () => {
 			}
 		];
 		componentRef.setInput('multiple', false);
-		componentRef.setInput('panels', mockPanels);
+		spyOn(component, 'panels').and.returnValue(mockPanels as any);
 
-		component.handlePanelCollapse({ index: 0, collapsed: false });
+		component.handlePanelCollapse(createCollapseEvent(0, 'test1', false));
 		expect(mockPanels[1].collapsed.set).toHaveBeenCalledWith(true);
 	});
 
@@ -103,4 +104,60 @@ describe('AccordionComponent', () => {
 		componentRef.setInput('options', { flush: true });
 		expect(component.haveFlushClass).toBeTrue();
 	});
+
+	it('should emit bound primitive values when bindValue is configured in multiple mode', () => {
+		componentRef.setInput('multiple', true);
+		componentRef.setInput('bindValue', 'id');
+
+		const onChangeSpy = jasmine.createSpy('onChange');
+		component.registerOnChange(onChangeSpy);
+
+		component.handlePanelCollapse(
+			createCollapseEvent(0, { id: 'item-3', name: 'Item 3', description: 'Content for Item 3' }, false)
+		);
+
+		expect(component.value).toEqual(['item-3']);
+		expect(onChangeSpy).toHaveBeenCalledWith(['item-3']);
+	});
+
+	it('should resolve collapsed state using bindValue when writeValue receives primitives', () => {
+		componentRef.setInput('multiple', true);
+		componentRef.setInput('bindValue', 'id');
+
+		const panelOneCollapsedSpy = jasmine.createSpy('panelOneCollapsed');
+		const panelTwoCollapsedSpy = jasmine.createSpy('panelTwoCollapsed');
+
+		const mockPanels = [
+			{
+				index: 0,
+				value: signal({ id: 'item-1', name: 'Item 1' }),
+				collapsed: { set: panelOneCollapsedSpy }
+			},
+			{
+				index: 1,
+				value: signal({ id: 'item-2', name: 'Item 2' }),
+				collapsed: { set: panelTwoCollapsedSpy }
+			}
+		];
+
+		spyOn(component, 'panels').and.returnValue(mockPanels as any);
+
+		component.writeValue(['item-2']);
+
+		expect(panelOneCollapsedSpy).toHaveBeenCalledWith(true);
+		expect(panelTwoCollapsedSpy).toHaveBeenCalledWith(false);
+	});
 });
+
+function createCollapseEvent(
+	index: number,
+	value: unknown,
+	collapsed: boolean
+): CollapseEvent {
+	return {
+		index,
+		value,
+		collapsed,
+		uncollapsed: !collapsed
+	};
+}

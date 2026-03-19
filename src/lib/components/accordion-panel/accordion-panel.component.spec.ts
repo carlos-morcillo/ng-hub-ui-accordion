@@ -36,12 +36,15 @@ describe('AccordionPanelComponent', () => {
 	it('should emit collapse event with correct data when toggled', () => {
 		const emitSpy = spyOn(component.collapsedChange, 'emit');
 		component.index = 1;
+		componentRef.setInput('value', 'panel-value');
 
 		component.toggleCollapse();
 
 		expect(emitSpy).toHaveBeenCalledWith({
 			index: 1,
-			collapsed: false
+			collapsed: false,
+			uncollapsed: true,
+			value: 'panel-value'
 		});
 	});
 

@@ -32,6 +32,7 @@ import { AccordionPanelComponent } from '../accordion-panel/accordion-panel.comp
 @Component({
 	selector: 'hub-accordion',
 	templateUrl: './accordion.component.html',
+	styleUrl: './accordion.component.scss',
 	host: { class: 'hub-accordion' },
 	providers: [
 		{
@@ -232,8 +233,9 @@ export class AccordionComponent implements ControlValueAccessor, OnDestroy {
 	 */
 	handleValue() {
 		for (const panel of this.panels()) {
+			const panelComparableValue = this.getComparableValue(panel.value());
 			panel.collapsed.set(
-				!this.value.find((v) => this.compareWith()(v, panel.value()))
+				!this.value.find((selectedValue) => this.compareWith()(selectedValue, panelComparableValue))
 			);
 		}
 	}
@@ -262,22 +264,24 @@ export class AccordionComponent implements ControlValueAccessor, OnDestroy {
 	 * @private
 	 */
 	private updateAccordionValue(panelValue: any, collapsed: boolean): void {
+		const comparablePanelValue = this.getComparableValue(panelValue);
+
 		// Ensure value is always an array for consistent processing
 		const currentValues = Array.isArray(this.value) ? [...this.value] : [];
 		
 		if (collapsed) {
 			// Remove value from selection
-			this.value = currentValues.filter(v => !this.compareWith()(v, panelValue));
+			this.value = currentValues.filter((selectedValue) => !this.compareWith()(selectedValue, comparablePanelValue));
 		} else {
 			// Add value to selection
 			if (this.multiple()) {
 				// Multiple mode: add if not already present
-				if (!currentValues.some(v => this.compareWith()(v, panelValue))) {
-					this.value = [...currentValues, panelValue];
+				if (!currentValues.some((selectedValue) => this.compareWith()(selectedValue, comparablePanelValue))) {
+					this.value = [...currentValues, comparablePanelValue];
 				}
 			} else {
 				// Single mode: replace current selection
-				this.value = [panelValue];
+				this.value = [comparablePanelValue];
 			}
 		}
 
@@ -312,5 +316,38 @@ export class AccordionComponent implements ControlValueAccessor, OnDestroy {
 			: (this.value.length > 0 ? this.value[0] : null);
 		
 		this.onChange(emittedValue);
+	}
+
+	/**
+	 * Returns the value used by selection/comparison logic, applying `bindValue` when configured.
+	 *
+	 * @param sourceValue Raw panel value.
+	 * @returns Comparable value used for internal selection state and emitted form value.
+	 */
+	private getComparableValue(sourceValue: any): any {
+		const bindPath = this.bindValue();
+		if (!bindPath) {
+			return sourceValue;
+		}
+		return this.readByPath(sourceValue, bindPath);
+	}
+
+	/**
+	 * Reads a nested value from an object using dot notation path syntax.
+	 *
+	 * @param source Object to read from.
+	 * @param path Dot notation path (e.g. `id`, `meta.key`).
+	 * @returns Resolved value or `undefined` when the path cannot be resolved.
+	 */
+	private readByPath(source: any, path: string): any {
+		if (source == null || !path) {
+			return undefined;
+		}
+		return path.split('.').reduce((currentValue: any, segment: string) => {
+			if (currentValue == null) {
+				return undefined;
+			}
+			return currentValue[segment];
+		}, source);
 	}
 }
