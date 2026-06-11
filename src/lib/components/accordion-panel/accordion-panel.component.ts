@@ -33,7 +33,7 @@ import { CollapseEvent } from '../../models/collapse-event';
  * @property {string} title - The title text displayed in the panel's header
  * @property {TemplateRef<any>} headerTpt - Template reference for custom header content
  *
- * @emits {collapseEvent} collapsedChange - Fired when the panel's collapsed state changes
+ * @emits {collapseEvent} collapseChange - Fired when the panel's collapsed state changes
  */
 @Component({
 	selector: 'hub-accordion-panel',
@@ -86,17 +86,17 @@ export class AccordionPanelComponent {
 	 * Emits a collapseEvent object containing the collapse state and animation details.
 	 * @event
 	 */
-	collapsedChange = output<CollapseEvent>();
+	collapseChange = output<CollapseEvent>();
 
 	/**
 	 * Toggles the collapse state of the accordion panel and emits the change event.
 	 * The event includes the panel's index and its new collapsed state.
 	 *
-	 * @emits collapsedChange - Emits an object containing the panel index and collapsed state
+	 * @emits collapseChange - Emits an object containing the panel index and collapsed state
 	 */
 	toggleCollapse() {
 		this.collapsed.update((value) => !value);
-		this.collapsedChange.emit({
+		this.collapseChange.emit({
 			index: this.index,
 			collapsed: this.collapsed(),
 			uncollapsed: !this.collapsed(),

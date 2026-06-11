@@ -34,7 +34,7 @@ describe('AccordionPanelComponent', () => {
 	});
 
 	it('should emit collapse event with correct data when toggled', () => {
-		const emitSpy = spyOn(component.collapsedChange, 'emit');
+		const emitSpy = spyOn(component.collapseChange, 'emit');
 		component.index = 1;
 		componentRef.setInput('value', 'panel-value');
 

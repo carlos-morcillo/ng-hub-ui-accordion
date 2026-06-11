@@ -1,17 +1,32 @@
 # ng-hub-ui-accordion
 
+[Español](./README.es.md) | **English**
+
+## Documentation and Live Examples
+
+This package is part of [Hub UI](https://hubui.dev/), a collection of Angular component libraries for standalone apps.
+
+- Docs: https://hubui.dev/accordion/overview/
+- Live examples: https://hubui.dev/accordion/examples/
+- Hub UI: https://hubui.dev/
+
 ## 🧩 Library Family `ng-hub-ui`
 
 This library is part of the **ng-hub-ui** ecosystem:
 
 - [**ng-hub-ui-accordion**](https://www.npmjs.com/package/ng-hub-ui-accordion) ← You are here
+- [**ng-hub-ui-action-sheet**](https://www.npmjs.com/package/ng-hub-ui-action-sheet)
 - [**ng-hub-ui-avatar**](https://www.npmjs.com/package/ng-hub-ui-avatar)
 - [**ng-hub-ui-board**](https://www.npmjs.com/package/ng-hub-ui-board)
 - [**ng-hub-ui-breadcrumbs**](https://www.npmjs.com/package/ng-hub-ui-breadcrumbs)
 - [**ng-hub-ui-calendar**](https://www.npmjs.com/package/ng-hub-ui-calendar)
+- [**ng-hub-ui-dropdown**](https://www.npmjs.com/package/ng-hub-ui-dropdown)
+- [**ng-hub-ui-history**](https://www.npmjs.com/package/ng-hub-ui-history)
 - [**ng-hub-ui-modal**](https://www.npmjs.com/package/ng-hub-ui-modal)
+- [**ng-hub-ui-nav**](https://www.npmjs.com/package/ng-hub-ui-nav)
 - [**ng-hub-ui-paginable**](https://www.npmjs.com/package/ng-hub-ui-paginable)
 - [**ng-hub-ui-portal**](https://www.npmjs.com/package/ng-hub-ui-portal)
+- [**ng-hub-ui-sortable**](https://www.npmjs.com/package/ng-hub-ui-sortable)
 - [**ng-hub-ui-stepper**](https://www.npmjs.com/package/ng-hub-ui-stepper)
 - [**ng-hub-ui-utils**](https://www.npmjs.com/package/ng-hub-ui-utils)
 
@@ -1615,7 +1630,7 @@ We welcome contributions to make ng-hub-ui-accordion even better!
 1. **Clone the repository**
 
     ```bash
-    git clone https://github.com/carlos-morcillo/ng-hub-ui-accordion.git
+    git clone https://github.com/carlosmorcillo/ng-hub-ui-accordion.git
     cd ng-hub-ui-accordion
     ```
 
@@ -1691,7 +1706,7 @@ Thanks to all the contributors who have helped make this library better:
 
 - **[Carlos Morcillo](https://github.com/carlos-morcillo)** - _Creator & Maintainer_
 
-_Want to see your name here? [Contribute](https://github.com/carlos-morcillo/ng-hub-ui-accordion/blob/main/CONTRIBUTING.md) to the project!_
+_Want to see your name here? [Contribute](https://github.com/carlosmorcillo/ng-hub-ui-accordion) to the project!_
 
 ---
 

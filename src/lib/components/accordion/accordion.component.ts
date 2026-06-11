@@ -134,7 +134,7 @@ export class AccordionComponent implements ControlValueAccessor, OnDestroy {
 		// Create new subscriptions for current panels
 		this.panels().forEach((panel, index) => {
 			panel.index = index;
-			const subscription = panel.collapsedChange.subscribe((event) => {
+			const subscription = panel.collapseChange.subscribe((event) => {
 				this.handlePanelCollapse(event);
 			});
 			this.panelSubscriptions.set(index, subscription);
