@@ -17,6 +17,9 @@ import { CollapseEvent } from '../../models/collapse-event';
  * A component that represents a single panel within an accordion.
  * Each panel can be expanded or collapsed independently and contains a header and content section.
  *
+ * @deprecated Use `ng-hub-ui-panels` instead — `<hub-panel>` inside `<hub-panels type="accordion">`
+ * is a drop-in, more capable replacement. This package will receive no further features.
+ *
  * @example
  * ```html
  * <hub-accordion-panel [title]="'Panel Title'" [value]="panelValue">

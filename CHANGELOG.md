@@ -5,6 +5,11 @@ All notable changes to the ng-hub-ui-accordion library will be documented in thi
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [21.1.2] - 2026-06-11
+
+### Deprecated
+- **ng-hub-ui-accordion is deprecated in favour of [ng-hub-ui-panels](https://www.npmjs.com/package/ng-hub-ui-panels).** Its accordion pattern now lives in `ng-hub-ui-panels` as `<hub-panels type="accordion">`, a drop-in and more capable replacement that also provides `tabs` and `pills` views. No further features are planned for this package; please migrate.
+
 ## [21.1.1] - 2026-03-19
 
 ### Fixed

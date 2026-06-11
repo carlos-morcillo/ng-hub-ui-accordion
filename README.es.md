@@ -2,6 +2,9 @@
 
 **Español** | [English](./README.md)
 
+> [!WARNING]
+> **Obsoleto.** `ng-hub-ui-accordion` ha sido reemplazado por [**ng-hub-ui-panels**](https://www.npmjs.com/package/ng-hub-ui-panels). Usa `<hub-panels type="accordion">` como sustituto directo y más capaz, que además ofrece las vistas `tabs` y `pills`. No se planean nuevas funcionalidades para este paquete; migra cuando puedas.
+
 ## Documentación y ejemplos en vivo
 
 Este paquete forma parte de [Hub UI](https://hubui.dev/), una colección de bibliotecas de componentes Angular para aplicaciones standalone.

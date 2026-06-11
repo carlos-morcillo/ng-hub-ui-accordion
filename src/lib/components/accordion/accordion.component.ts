@@ -18,6 +18,10 @@ import { AccordionPanelComponent } from '../accordion-panel/accordion-panel.comp
  * sections of related content. Supports single or multiple expanded panels and flush styling.
  * Implements ControlValueAccessor for form integration.
  *
+ * @deprecated Use `ng-hub-ui-panels` instead — `<hub-panels type="accordion">` is a
+ * drop-in, more capable replacement (it also offers `tabs` and `pills` views). This
+ * package will receive no further features.
+ *
  * @example
  * ```html
  * <hub-accordion [multiple]="true" [options]="{flush: true}">
